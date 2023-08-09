@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Product {
+        id;
+        price;
+        quality;
+
+        constructor(idInput, priceInput, qualityInput) {
+            this.id = idInput;
+            this.price = priceInput;
+            this.quality = qualityInput;
+        }
+
+        get id() {
+            return this.id;
+        }
+
+        set id(idInput) {
+            this.id = idInput;
+        }
+
+        get price() {
+            return this.price;
+        }
+
+        set price(priceInput) {
+            this.price = priceInput;
+        }
+
+        get quality() {
+            return this.quality;
+        }
+
+        set quality(qualityInput) {
+            this.quality = qualityInput;
+        }
+    }
+
+    class Store {
+        listProducts = [];
+
+        constructor(listProductInput) {
+            this.listProducts = listProductInput;
+        }
+
+
+        get listProducts() {
+            return this.listProducts;
+        }
+
+        set listProducts(listProductInput) {
+            this.listProducts = listProductInput;
+        }
+
+        add(newProduct) {
+            this.listProducts.push(newProduct);
+        }
+
+        remove(index) {
+            this.listProducts.splice(index, 1)
+        }
+
+        findAll() {
+            return this.listProducts;
+        }
+
+        edit(index, newProduct) {
+            this.listProducts[index] = newProduct;
+        }
+    }
+
+    function main() {
+        let sp1 = new Product(123, 1000, 'good')
+        let sp2 = new Product(124, 3000, 'medium')
+        let sp3 = new Product(125, 4000, 'bad')
+        let sp4 = new Product(126, 5000, 'good')
+        let sp5 = new Product(127, 6000, 'good')
+        let sp6 = new Product(128, 7000, 'good')
+        let quay1 = new Store([])
+        quay1.add(sp1)
+        quay1.add(sp2)
+        quay1.add(sp3)
+        quay1.add(sp4)
+        quay1.add((sp5))
+
+        let quay1new = quay1.findAll()
+        quay1.remove(3)
+        // quay1new = quay1.findAll()
+        for (let i = 0; i < quay1new.length; i++) {
+            console.log(quay1new[i].id)
+
+
+            quay1.edit(4, sp6)
+            for (let i = 0; i < quay1new.length; i++) {
+                console.log(` ID sản phẩm sau khi sửa thứ ${i} là: ${quay1new[i].id}`)
+            }
+        }
+    }
+      main()
+</script>
+</body>
+</html>
